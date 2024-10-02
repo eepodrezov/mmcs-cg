@@ -9,7 +9,7 @@
         <TextBox Name="functionInput"
                  HorizontalAlignment="Left" 
                  VerticalAlignment="Top"
-                 Width="200"
+                 Width="400"
                  TextChanged="OnFunctionInputChanged"
                  Watermark="Введите формулу (например, sin(x) или x^2)" />
         <Button Name="consoleButton"
