@@ -1,9 +1,19 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        xmlns:local="clr-namespace:GraphApp"
         x:Class="lab1.MainWindow"
-        Title="lab1">
-    Welcome to Avalonia!
+        Width="800" Height="600"
+        Title="Graph Plotter">
+    <Grid>
+        <Canvas Name="graphCanvas" Width="800" Height="600" />
+        <ComboBox Name="functionComboBox"
+          HorizontalAlignment="Left" VerticalAlignment="Top"
+          SelectionChanged="OnFunctionSelected">
+        <ComboBoxItem Content="sin(x)" />
+        <ComboBoxItem Content="x^2" />
+    </ComboBox>
+    <Button Name="consoleButton"
+            HorizontalAlignment="Left" VerticalAlignment="Bottom"
+            Content="Вывести в консоль" Click="OnConsoleButtonClick" />
+    </Grid>
 </Window>
