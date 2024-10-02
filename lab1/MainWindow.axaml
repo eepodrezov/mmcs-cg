@@ -1,0 +1,19 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:GraphApp"
+        x:Class="lab1.MainWindow"
+        Width="800" Height="600"
+        Title="Graph Plotter">
+    <Grid>
+        <Canvas Name="graphCanvas" Width="800" Height="600" />
+        <TextBox Name="functionInput"
+                 HorizontalAlignment="Left" 
+                 VerticalAlignment="Top"
+                 Width="400"
+                 TextChanged="OnFunctionInputChanged"
+                 Watermark="Введите формулу (например, sin(x) или x^2)" />
+        <Button Name="consoleButton"
+                HorizontalAlignment="Left" VerticalAlignment="Bottom"
+                Content="Вывести в консоль" Click="OnConsoleButtonClick" />
+    </Grid>
+</Window>
