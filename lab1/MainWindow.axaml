@@ -6,14 +6,14 @@
         Title="Graph Plotter">
     <Grid>
         <Canvas Name="graphCanvas" Width="800" Height="600" />
-        <ComboBox Name="functionComboBox"
-            HorizontalAlignment="Left" VerticalAlignment="Top"
-            SelectionChanged="OnFunctionSelected">
-            <ComboBoxItem Content="sin(x)" />
-            <ComboBoxItem Content="x^2" />
-        </ComboBox>
-    <Button Name="consoleButton"
-            HorizontalAlignment="Left" VerticalAlignment="Bottom"
-            Content="Вывести в консоль" Click="OnConsoleButtonClick" />
+        <TextBox Name="functionInput"
+                 HorizontalAlignment="Left" 
+                 VerticalAlignment="Top"
+                 Width="200"
+                 TextChanged="OnFunctionInputChanged"
+                 Watermark="Введите формулу (например, sin(x) или x^2)" />
+        <Button Name="consoleButton"
+                HorizontalAlignment="Left" VerticalAlignment="Bottom"
+                Content="Вывести в консоль" Click="OnConsoleButtonClick" />
     </Grid>
 </Window>

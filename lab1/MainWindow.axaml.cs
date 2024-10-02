@@ -17,7 +17,10 @@ namespace lab1
         {
             InitializeComponent();
             selectedFunction = Math.Sin; // По умолчанию sin(x)
+
             this.PointerWheelChanged += OnPointerWheelChanged;
+
+            
         }
 
         // Метод для отрисовки графика
@@ -101,19 +104,39 @@ namespace lab1
                 Console.WriteLine();
             }
         }
-        // Метод обработки события при выборе функции из ComboBox
-            private void OnFunctionSelected(object? sender, SelectionChangedEventArgs e)
+        // Метод обработки события при изменении текста в TextBox
+        private void OnFunctionInputChanged(object? sender, TextChangedEventArgs e)
+        {
+            string? input = functionInput.Text; // Получаем текст из TextBox
+            if (!string.IsNullOrEmpty(input)) // Проверка на null или пустую строку
             {
-                if (functionComboBox.SelectedItem is ComboBoxItem item)
-                {
-                    string? functionName = item.Content?.ToString(); 
-
-                    if (!string.IsNullOrEmpty(functionName))
-                    {
-                        ChangeFunction(functionName); 
-                    }
-                }
+                Console.WriteLine(input); 
+                ChangeFunctionFromInput(input); // Передаем текстовое значение в метод
             }
+        }
+
+        private void ChangeFunctionFromInput(string inputFormula)
+        {
+            Console.WriteLine($"Changing function to: {inputFormula}"); // Отладка: выводим формулу
+
+            // Попробуем выполнить простую проверку на введенные формулы
+            switch (inputFormula) // Используем inputFormula вместо functionInput
+            {
+                case "sin(x)":
+                    selectedFunction = Math.Sin;
+                    break;
+                case "x^2":
+                    selectedFunction = x => x * x;
+                    break;
+                default:
+                    // По дефолту задает синус - можно добавить реальный парсинг
+                    selectedFunction = Math.Sin; // По умолчанию
+                    break;
+            }
+
+            this.InvalidateVisual(); // Перерисовка графика
+        }
+
 
 
         // Метод обработки события нажатия кнопки для вывода графика в консоль
