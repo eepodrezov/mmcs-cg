@@ -2,7 +2,7 @@ using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
 
-namespace lab2;
+namespace ImageProcessingApp;
 
 public partial class App : Application
 {
