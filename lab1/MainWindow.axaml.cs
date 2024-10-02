@@ -102,14 +102,19 @@ namespace lab1
             }
         }
         // Метод обработки события при выборе функции из ComboBox
-        private void OnFunctionSelected(object? sender, SelectionChangedEventArgs e)
-        {
-            if (functionComboBox.SelectedItem is ComboBoxItem item)
+            private void OnFunctionSelected(object? sender, SelectionChangedEventArgs e)
             {
-                // Получаем название выбранной функции и передаем его в метод для смены функции
-                ChangeFunction(item.Content.ToString());
+                if (functionComboBox.SelectedItem is ComboBoxItem item)
+                {
+                    string? functionName = item.Content?.ToString(); 
+
+                    if (!string.IsNullOrEmpty(functionName))
+                    {
+                        ChangeFunction(functionName); 
+                    }
+                }
             }
-        }
+
 
         // Метод обработки события нажатия кнопки для вывода графика в консоль
         private void OnConsoleButtonClick(object? sender, RoutedEventArgs e)
