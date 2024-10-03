@@ -8,5 +8,10 @@
     <Button Content="Load Image" Click="OnLoadImageClick"/>
     <Image Name="ImageControl" Width="400" Height="300"/>
     <TextBlock Name="FileNameTextBlock" HorizontalAlignment="Center" />
+    
+    <!-- Новые кнопки для заданий с видимостью по умолчанию скрыты -->
+    <Button Name="Task1Button" Content="Задание 1" Click="OnTask1Click" IsVisible="False"/>
+    <Button Name="Task2Button" Content="Задание 2" Click="OnTask2Click" IsVisible="False"/>
+    <Button Name="Task3Button" Content="Задание 3" Click="OnTask3Click" IsVisible="False"/>
   </StackPanel>
 </Window>
