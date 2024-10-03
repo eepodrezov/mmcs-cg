@@ -1,7 +1,7 @@
 ﻿using Avalonia;
 using System;
 
-namespace ImageProcessingApp;
+namespace ImageLoaderApp;
 
 class Program
 {

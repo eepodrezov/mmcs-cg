@@ -1,9 +1,12 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        x:Class="ImageProcessingApp.MainWindow"
-        Title="Image Processing" Width="400" Height="200">
-    <StackPanel Margin="20">
-        <Button Name="LoadButton" Content="Load Image" Click="LoadButton_Click"/>
-        <TextBlock Name="FileNameText" Margin="0,20,0,0"/>
-    </StackPanel>
+        x:Class="ImageLoaderApp.MainWindow"
+        Title="Image Loader"
+        Width="600" Height="400">
+
+  <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="10">
+    <Button Content="Load Image" Click="OnLoadImageClick"/>
+    <Image Name="ImageControl" Width="400" Height="300"/>
+    <TextBlock Name="FileNameTextBlock" HorizontalAlignment="Center" />
+  </StackPanel>
 </Window>

@@ -1,10 +1,10 @@
 using Avalonia.Controls;
-using Avalonia.Interactivity;
-using System.Collections.Generic;
+using Avalonia.Media.Imaging;
+using Avalonia.Platform.Storage;
 using System.IO;
 using System.Threading.Tasks;
 
-namespace ImageProcessingApp
+namespace ImageLoaderApp
 {
     public partial class MainWindow : Window
     {
@@ -13,42 +13,34 @@ namespace ImageProcessingApp
             InitializeComponent();
         }
 
-        private async void LoadButton_Click(object sender, RoutedEventArgs e)
+        private async void OnLoadImageClick(object sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-            // Выводим сообщение через Debug
-            System.Diagnostics.Debug.WriteLine("Open");
+            if (this.StorageProvider != null)
+            {
+                var file = await OpenImageFileAsync();
+                if (file != null)
+                {
+                    var filePath = file.Path.LocalPath;
 
-            // Либо обновляем интерфейс
-            FileNameText.Text = "Open";
+                    // Отображение названия файла
+                    FileNameTextBlock.Text = Path.GetFileName(filePath);
 
-            // // Используем стандартный OpenFileDialog
-            // var openFileDialog = new OpenFileDialog
-            // {
-            //     AllowMultiple = false,
-            //     Filters = new List<FileDialogFilter>
-            //     {
-            //         new FileDialogFilter
-            //         {
-            //             Name = "Image Files",
-            //             Extensions = new List<string> { "jpg", "png", "bmp" }
-            //         }
-            //     }
-            // };
+                    // Загрузка и отображение изображения
+                    var bitmap = new Bitmap(filePath);
+                    ImageControl.Source = bitmap;
+                }
+            }
+        }
 
-            // // Показываем диалоговое окно
-            // string[]? result = await openFileDialog.ShowAsync(this);
-            
-            // if (result != null && result.Length > 0)
-            // {
-            //     string filePath = result[0];
-            //     string fileName = Path.GetFileName(filePath);
+        private async Task<IStorageFile?> OpenImageFileAsync()
+        {
+            var filePickerResult = await StorageProvider.OpenFilePickerAsync(new FilePickerOpenOptions
+            {
+                AllowMultiple = false,
+                FileTypeFilter = new[] { new FilePickerFileType("JPEG files") { Patterns = new[] { "*.jpg", "*.jpeg" } } }
+            });
 
-            //     // Вместо Console используем Debug или обновляем UI
-            //     System.Diagnostics.Debug.WriteLine($"Loaded file: {fileName}");
-                
-            //     // Обновляем текстовый блок
-            //     FileNameText.Text = $"Loaded file: {fileName}";
-            // }
+            return filePickerResult.Count > 0 ? filePickerResult[0] : null;
         }
     }
 }
