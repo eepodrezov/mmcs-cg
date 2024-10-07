@@ -54,20 +54,26 @@ namespace ImageLoaderApp
 
         private void OnTask1Click(object sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-            var task1Window = new Task1Window((Bitmap)ImageControl.Source); 
-            task1Window.Show();
+            if (ImageControl.Source is Bitmap bitmap) {
+                var task1Window = new Task1Window(bitmap);
+                task1Window.Show();
+            }
         }
 
         private void OnTask2Click(object sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-            var task2Window = new Task2Window((Bitmap)ImageControl.Source);
-            task2Window.Show();
+            if (ImageControl.Source is Bitmap bitmap) {
+                var task2Window = new Task2Window((Bitmap)ImageControl.Source);
+                task2Window.Show();
+            }
         }
 
         private void OnTask3Click(object sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-            var task3Window = new Task3Window((Bitmap)ImageControl.Source); 
-            task3Window.Show();
+            if (ImageControl.Source is Bitmap bitmap) {
+                var task3Window = new Task3Window((Bitmap)ImageControl.Source); 
+                task3Window.Show();
+            }
         }
 
     }
